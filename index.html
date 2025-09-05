@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Portfolio</title>
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="icon" type="image/png" href="images/favico.png">
+</head>
+
+<body>
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo" onclick="scrollToSection('home')">Peter Mahfouz</div>
+        <div class="nav-items desktop-only">
+          <button onclick="scrollToSection('home')">Home</button>
+          <button onclick="scrollToSection('about')">About</button>
+          <button onclick="scrollToSection('skills')">Skills</button>
+          <button onclick="scrollToSection('projects')">Projects</button>
+          <button onclick="scrollToSection('cv')">CV</button>
+          <button onclick="scrollToSection('contact')">Contact</button>
+        </div>
+        <button class="mobile-toggle" onclick="toggleMobileMenu()">☰</button>
+      </div>
+      <div id="mobileMenu" class="mobile-menu hidden">
+        <button onclick="scrollToSection('home')">Home</button>
+        <button onclick="scrollToSection('about')">About</button>
+        <button onclick="scrollToSection('skills')">Skills</button>
+        <button onclick="scrollToSection('projects')">Projects</button>
+        <button onclick="scrollToSection('cv')">CV</button>
+        <button onclick="scrollToSection('contact')">Contact</button>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="container fade-in">
+      <h1><span>Hello, I'm</span> <span>Peter Mahfouz</span></h1>
+      <p>A passionate developer creating amazing digital experiences</p>
+      <div class="hero-buttons">
+        <button class="btn-dark" onclick="scrollToSection('projects')">View My Work</button>
+        <button class="btn-outline" onclick="scrollToSection('contact')">Get In Touch</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <p>
+          A results-driven developer with a foundational background in Business Administration from Helwan University.
+          His academic journey sparked a deep interest in technology, which he channeled into a passion for web
+          development. He has since diligently refined his full-stack skills to build high-quality, efficient, and
+          user-centric web applications.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>Skills & Technologies</h2>
+      <div class="skills-grid">
+        <div class="skills-proficiency">
+          <h3>Proficiency Levels</h3>
+          <div id="skills-bars"></div>
+        </div>
+        <div class="skills-stack">
+          <h3>Technology Stack</h3>
+          <div id="skills-categories"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div id="projects-list" class="projects-container"></div>
+    </div>
+    <div id="galleryModal" class="modal hidden" onclick="closeGallery(event)">
+      <span class="close-btn" onclick="closeGallery(event)">&times;</span>
+      <img id="galleryImage" class="modal-content" src="" alt="Project Image" />
+      <button class="prev-btn" onclick="changeImage(-1)">&#10094;</button>
+      <button class="next-btn" onclick="changeImage(1)">&#10095;</button>
+    </div>
+
+  </section>
+
+
+  <!-- CV Section -->
+  <section id="cv">
+    <div class="container cv-container">
+      <h2>Experience & Education</h2>
+      <div class="cv-grid">
+        <!-- Download CV -->
+        <div class="cv-download">
+          <div class="cv-download-icon">📄</div>
+          <h3>Download My CV</h3>
+          <p>Get a detailed overview of my experience, skills, and achievements.</p>
+          <button id="downloadCV" class="cv-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M12 16.5a1 1 0 0 1-.7-.3l-4-4a1 1 0 0 1 1.4-1.4l2.3 2.3V6a1 1 0 1 1 2 0v7.1l2.3-2.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-.7.3Z" />
+              <path d="M5 18a1 1 0 0 0-1 1v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a1 1 0 1 0-2 0v1H6v-1a1 1 0 0 0-1-1Z" />
+            </svg>
+            Download CV
+          </button>
+        </div>
+
+        <!-- Experience & Education -->
+        <div class="cv-experience">
+          <!-- Education -->
+          <div class="cv-education">
+            <h3>Education</h3>
+            <div class="education-item">
+              <div class="education-header">
+                <h4>Bachelor of Business Information System</h4>
+                <span>2021 - 2024</span>
+              </div>
+              <p>Helwan University</p>
+              <p>
+                Throughout my learning journey, I found my interest in the
+                technology field, so I learned and enhanced my passion for
+                web development and consistently improved my web skills to
+                build high-quality applications.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-container">
+      <h2>Get In Touch</h2>
+      <div class="contact-grid">
+        <!-- معلومات التواصل -->
+        <div class="contact-info-grid">
+          <div class="contact-item">
+            <div class="icon email-icon">
+              <svg viewBox="0 0 24 24" fill="white">
+                <path
+                  d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1.5l-10 6.25L2 5.5V4zm0 3.236V20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7.236l-10 6.25L2 7.236z" />
+              </svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:petermahfouz090@gmail.com">petermahfouz090@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon linkedin-icon">
+              <svg viewBox="0 0 24 24" fill="white">
+                <path
+                  d="M4.98 3.5c0 1.38-1.12 2.5-2.49 2.5C1.12 6 0 4.88 0 3.5 0 2.12 1.12 1 2.49 1c1.37 0 2.49 1.12 2.49 2.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6 5.05 0 5.98 3.32 5.98 7.63V24h-5v-7.92c0-1.89-.03-4.32-2.63-4.32-2.64 0-3.05 2.06-3.05 4.19V24h-5V8z" />
+              </svg>
+            </div>
+            <div>
+              <h4>LinkedIn</h4>
+              <a href="https://www.linkedin.com/in/peter-mahfouz-8342bb166/"
+                target="_blank">https://www.linkedin.com/in/peter-mahfouz-8342bb166/</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- نموذج الاتصال -->
+        <div class="contact-form">
+          <h3>Send me a message</h3>
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="eec49e08-c987-440e-841d-a3cde76cd0ca">
+            <div>
+              <label for="name">Name</label><br>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="email">Email</label><br>
+              <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+            </div>
+            <div>
+              <label for="message">Message</label><br>
+              <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+            </div>
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/201552637533" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path
+        d="M16.003 2.001c-7.724 0-13.999 6.276-13.999 14.002a13.93 13.93 0 0 0 2.055 7.28L2 30l6.883-2.024a13.961 13.961 0 0 0 7.12 1.949c7.723 0 13.999-6.276 13.999-14.002s-6.276-13.999-14-13.999zm.001 25.59a11.57 11.57 0 0 1-5.895-1.596l-.422-.248-4.084 1.2 1.222-3.978-.274-.41a11.549 11.549 0 0 1-1.79-6.192c0-6.39 5.201-11.592 11.592-11.592 6.388 0 11.59 5.202 11.59 11.592 0 6.389-5.201 11.592-11.59 11.592zm6.446-8.729c-.353-.177-2.085-1.031-2.408-1.148-.322-.119-.558-.177-.794.177-.236.354-.91 1.146-1.116 1.381-.206.236-.412.266-.764.089-.353-.178-1.489-.548-2.837-1.746-1.048-.935-1.755-2.089-1.961-2.442-.206-.354-.022-.546.154-.723.158-.158.354-.412.53-.618.178-.206.236-.354.354-.589.119-.236.06-.442-.03-.618-.089-.177-.794-1.914-1.088-2.621-.285-.684-.577-.591-.794-.601-.206-.009-.442-.011-.677-.011s-.618.089-.94.442c-.323.354-1.235 1.208-1.235 2.946 0 1.738 1.265 3.417 1.441 3.652.177.236 2.491 3.804 6.036 5.331.844.364 1.501.58 2.014.742.846.27 1.617.232 2.226.141.679-.101 2.085-.853 2.379-1.678.295-.826.295-1.535.206-1.678-.089-.145-.323-.236-.676-.412z" />
+    </svg>
+  </a>
+  <button class="scroll-up-btn" title="Go to Top">
+    <svg xmlns="http://www.w3.org/2000/svg" class="scroll-arrow" viewBox="0 0 24 24">
+      <path
+        d="M12 20c.552 0 1-.448 1-1V8.414l4.293 4.293c.39.39 1.024.39 1.414 0s.39-1.024 0-1.414l-6-6c-.39-.39-1.024-.39-1.414 0l-6 6c-.39.39-.39 1.024 0 1.414s1.024.39 1.414 0L11 8.414V19c0 .552.448 1 1 1z" />
+    </svg>
+  </button>
+
+
+  <script src="portfolio.js"></script>
+</body>
+
+</html>
