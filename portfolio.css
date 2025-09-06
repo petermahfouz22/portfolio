@@ -655,3 +655,31 @@ box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 .scroll-up-btn:hover .scroll-arrow {
   transform: translateY(-4px) scale(1.1);
 }
+/* منع أي scroll أفقي */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* تأكد أن الصور والفيديوهات ما يطلعوش برا الشاشة */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* خلي كل الجريد والفلكس يلتفوا تلقائي */
+.projects-container,
+.skills-tech-list,
+.contact-grid {
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
